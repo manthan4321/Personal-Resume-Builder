@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input_data</title>
+    <link rel="stylesheet" href="/style/input_data.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://www.resume-now.com/sapp/themes/resumenow/img/logo-resume-now.svg" alt="Logo">
+        </div>
+        
+    </header>
+    
+    <main>
+        <form class="resume-form" action="user_data.php" method="post">
+            <h2>Personal Information</h2>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="link">LinkedIn Profile:</label>
+            <input type="text" id="link" name="link" required>
+            
+            <label for="photo">Upload your Photo:</label>
+            <input type="file" name="photo" id="photo" multiple>
+    
+
+            <h2>Experience</h2>
+            <label for="company">Company Name:</label>
+            <input type="text" id="company" name="company">
+
+            <label for="role">Role:</label>
+            <input type="text" id="role" name="role">
+
+            <label for="duration">Duration:</label>
+            <input type="text" id="duration" name="duration">
+
+            <h2>Education</h2>
+            <label for="institution">Institution Name:</label>
+            <input type="text" id="institution" name="institution">
+
+            <label for="degree">Degree:</label>
+            <input type="text" id="degree" name="degree">
+
+            <label for="grad-year">Graduation Year:</label>
+            <input type="text" id="grad-year" name="grad-year">
+
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+</body>
+</html>
+</html>

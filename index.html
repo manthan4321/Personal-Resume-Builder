@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Coiny&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"> -->
+
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 200vh;
+            width: 100%;
+            /* Set the blend mode to blend the images together */
+            background-blend-mode: lighten;
+            /* background: linear-gradient(135deg, #f4e7d3,  #ffffff,#cdf7f7); */
+
+            /* You can try other modes like overlay, screen, lighten, etc. */
+            /* animation: bg-color-change forwards;
+            animation-timeline: scroll(); /* Use scroll-based timeline */
+            /* animation-range: 0 200vh;  */
+
+
+        }
+
+
+        
+        .Header {
+            width: 100%;
+            height: 9vh;
+            background-color: white;
+            border: 0.1px solid rgb(230, 221, 221);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0px;
+            left: 0;
+            right: 0;
+            z-index: 1;
+
+        }
+
+        .logo {
+            position: absolute;
+            left: 210px;
+            top: 25px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            position: absolute;
+            top: 35px;
+            right: 180px;
+            text-indent: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+             
+        }
+
+        nav li {
+            display: inline-block;
+            /* Make list items display horizontally */
+
+
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-size:20px ;
+
+        }
+
+        
+
+        .left {
+            border: 0.01p dotted wheat;
+            position: absolute;
+            top: 25vh;
+            left: 300px;
+            width: 50vh;
+
+        }
+
+
+        .left h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+
+        }
+
+        .heading_p {
+
+            font-size: 1.6em;
+            line-height: 1.6;
+            width: 500px;
+        }
+        p {
+            font-size: 1.6em;
+            line-height: 1.6;
+            /* width: 500px; */
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        
+        }
+
+        .left button a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .left button:hover {
+            background-color: rgb(105, 105, 218);
+        }
+
+
+        .demo {
+            height: 600px;
+            width: 450px;
+            position: absolute;
+            top: 16vh;
+            right: 350px;
+            direction: rtl;
+            border: 1px solid white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            animation: slide 2s ease 1;
+        }
+
+
+        /* .background {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            opacity: 0.3;
+            z-index: 0;
+        } */
+
+        .top {
+            background: linear-gradient(135deg, #f4e7d3, #ffffff, #cdf7f7);
+            height: 100vh;
+            width: 100%;
+
+        }
+
+        @keyframes slide {
+            from {
+                transform: translateX(60px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* @keyframes bg-color-change {
+            0% {
+                background-color:none;
+            }
+
+            50% {
+                background-color: white;
+            }
+
+            100% {
+                background-color: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu1Pkk94U5o3TVTGjikXws11wBTLm61iOMjw&s);
+            }
+        } */
+
+        /* .second{
+            margin-top: 100vh;
+        } */
+        .bottom img {
+            margin-top: 0cm;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .between img {
+            margin-top: 0cm;
+            height: 50px;
+            width: 100%;
+            opacity: 0.01;
+        }
+
+        /* .between1 img {
+            margin-top: 0;
+            height: 100px;
+            width: 100%;
+            opacity: 0.02;
+        } */
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        /*         ....................................................                                        */
+        /* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}*/
+
+        .middle {
+            font-family: Arial, sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background: linear-gradient(to bottom, #f7f9fc, #e3f2fd, #f7f9fc); */
+            /* margin-top: 100vh; */
+
+        }
+
+        .between {
+            width: 1400px;
+            margin-left: 250px;
+
+        }
+
+        .steps-container {
+            width: 80%;
+            text-align: center;
+
+        }
+
+        .steps-container h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            margin-left: 150px;
+
+        }
+
+        .steps-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .step-1,
+        .step-2,
+        .step-3 {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            /* height: 600px; */
+        }
+
+        /* ----------------------------------------- */
+        .step-1,
+        .step-2,
+        .step-3 {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .step-1:hover,
+        .step-2:hover,
+        .step-3:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /*  ---------------------------------------- */
+        .step-1 img {
+            width: 300px;
+            height: 250px;
+            margin-bottom: 1rem;
+            opacity: 10;
+            z-index: 1;
+            /* mix-blend-mode: color-burn; */
+        }
+
+        .step-2 img {
+            width: 250px;
+            height: 250px;
+            margin-bottom: 1rem;
+            opacity: 10;
+            z-index: 1;
+            /* mix-blend-mode: color-burn; */
+        }
+
+        .step-3 img {
+            width: 300px;
+            height: 250px;
+            margin-bottom: 1rem;
+            opacity: 10;
+            z-index: 1;
+            /* mix-blend-mode: color-burn; */
+
+        }
+
+        .step-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-info p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .step-info {
+            animation: fade_in_up 2s ease 1;
+        }
+
+        @keyframes fade_in_up {
+            from {
+                transform: translateY(60px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* @media (max-width: 768px) {
+            .steps-content {
+                grid-template-columns: 1fr;
+            }
+        } */
+
+        /* ---------bottom----------- */
+        .expert-review-section {
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu1Pkk94U5o3TVTGjikXws11wBTLm61iOMjw&s);
+            padding: 60px 20px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+
+            background-repeat: no-repeat;
+            background-size: cover;
+
+
+        }
+
+        .expert-review-section h2 {
+            font-size: 3.2rem;
+            color: #222;
+            margin-bottom: 1.5rem;
+            font-weight: 800px;
+            width: 1000px;
+            margin-left: 300px;
+        }
+
+        .review-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-image img {
+            width: 500px;
+            height: 500px;
+            border-radius: 20px;
+
+        }
+
+        .review-details {
+            text-align: left;
+            /* width: 600px; */
+            max-width: 500px;
+
+        }
+
+        .review-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .review-item h3 {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            /* font-family: 'Arial', 'Helvetica', sans-serif; */
+            font-weight: 600;
+            font-family: "Rubik", sans-serif;
+            font-optical-sizing: auto;
+            /* font-weight: <weight>; */
+            font-style: normal;
+
+        }
+
+        .review-item p {
+            font-size: 1.3rem;
+            color: #555;
+            /* font-family: 'Arial', 'Helvetica', sans-serif; */
+            font-weight: 400;
+            font-family: "Rubik", sans-serif;
+            font-optical-sizing: auto;
+            /* font-weight: <weight>; */
+            font-style: normal;
+            width: 600px;
+
+        }
+
+        .template-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+
+        }
+
+        .template-button:hover {
+
+            background-color: rgb(105, 105, 218);
+
+        }
+
+        /* ------------Footer---------------- */
+        footer {
+            margin: 0%;
+            padding: 0%;
+        }
+
+        /* .footer_head {
+            background-color: rgba(0, 0, 0, 0.993);
+            height: 240px;
+            width: 100%;
+            margin-top: 0cm;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            /* align-items: center; */
+            /* flex-wrap: wrap;} */
+
+
+        
+
+        /* .footer_head a {
+            text-decoration: none;
+            color: white;
+            line-break: normal;
+            font-size: small;
+            position: relative;
+            top: 70px; */
+            
+
+
+        /* }
+        .footer_links i{
+            color: white;
+            font-size: xx-large;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /* justify-content: space-evenly; */
+            /* align-items: center;}  */  
+
+        .footer_base {
+            background-color: aliceblue;
+            /* height: 120px; */
+            width: 100px;
+        }
+        .footer_head {
+    background-color: rgba(0, 0, 0, 0.993);
+    height: 200px;
+    width: 100%;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer_head ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 32px;
+}
+
+.footer_head a {
+    text-decoration: none;
+    color: white;
+    font-size: small;
+}
+
+.footer_links {
+    margin-top: 0.1px; /* Space between links and icons */
+}
+
+.footer_links i {
+    color: white;
+    font-size: xx-large;
+    margin: 0 30px;
+}
+
+.footer_base{
+    background-color:white;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+
+}
+footer p {
+    font-size: 16px;
+}
+
+/* @media screen and (max-width:480px) {
+body{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+.top{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+} */
+/* Mobile Devices (max-width: 768px) */
+/* Small Phones (Portrait mode or very small devices) */
+@media screen and (max-width: 576px) {
+    .Header {
+        height: auto;
+        padding: 8px;
+    }
+
+    .logo {
+        width: 100px;
+        position: relative;
+        top: 5px;
+        left: 10px;
+    }
+
+    nav ul {
+        font-size: 12px;
+        text-indent: 5px;
+        padding: 0;
+    }
+
+    .left {
+        width: 95%;
+        left: 5px;
+        top: 10vh;
+    }
+
+    .demo {
+        width: 100%;
+        margin: 10px auto;
+        position: relative;
+    }
+
+    .steps-content {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    footer .footer_head ul {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .footer_links i {
+        font-size: medium;
+    }
+}
+
+/* Tablets and Small Devices */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+    .logo {
+        width: 120px;
+        left: 20px;
+        top: 10px;
+    }
+
+    nav ul {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .left {
+        width: 90%;
+        left: 10px;
+        top: 15vh;
+    }
+
+    .demo {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .steps-content {
+        grid-template-columns: 1fr;
+    }
+
+    footer .footer_head ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer_links i {
+        font-size: large;
+    }
+}
+
+/* Larger Tablets */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .logo {
+        width: 150px;
+        left: 30px;
+        top: 15px;
+    }
+
+    nav ul {
+        font-size: 16px;
+    }
+
+    .left {
+        width: 75%;
+        left: 30px;
+        top: 20vh;
+    }
+
+    .demo {
+        width: 60%;
+        margin: 30px auto;
+    }
+
+    .steps-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+.template-button a{
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <!-- <img class="background" src="https://img.freepik.com/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8189.jpg  " alt="bgd design"> -->
+        <div class="top">
+            <div class="Header">
+                <a href="index.html"><img class="logo" src="https://www.resume-now.com/sapp/themes/resumenow/img/logo-resume-now.svg"
+                    alt="Resume Now Logo"></a>
+
+                <nav>
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="index.html">Home</a></li>
+
+
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="top_content">
+                <div class="left">
+                    <h1>Job-Winning<br>Resume Templates</h1>
+                    <p class="heading_p">Easily create the perfect resume for any job using our best-in-class resume
+                        builder platform.</p>
+                    <button><a href="login.html">Create your Resume</a></button>
+                </div>
+
+                <div class="right">
+
+                    <img class="demo" src="pictures/demo.png" alt="">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="middle">
+            <div class="between">
+                <!-- <img src="pictures/background- bottom.png" alt="bgd design"> -->
+
+                <section class="steps-container">
+                    <h1>Create job-winning resumes in 3 simple steps!</h1>
+
+
+
+                    <div class="steps-content">
+                        <div class="step-1">
+                            <img src="https://pro.kudoswall.com/landing-assets/images/add.gif" alt="animated-image"
+                                class="add">
+                            <div class="step-info">
+                                <h2>1. Add</h2>
+                                <p>Add your work experience, accomplishments, and education with AI-powered suggestions
+                                    guiding you at every step. Alternatively, import your existing resume or LinkedIn
+                                    Profile for automatic enhancement.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-2">
+                            <img src="https://pro.kudoswall.com/landing-assets/images/create.png" alt="animated-image"
+                                class="add">
+
+                            <div class="step-info">
+                                <h2>2. Create</h2>
+                                <p>Choose from a library of professional templates, then click to create a fully
+                                    formatted resume, cover letter, or LinkedIn headline that’s tailored to the job.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-3">
+                            <img src="https://pro.kudoswall.com/landing-assets/images/send.gif" alt="animated-image"
+                                class="add">
+
+                            <div class="step-info">
+                                <h2>3. Send</h2>
+                                <p>Download and share your cover letter, resume, and online portfolio with confidence
+                                    and get ready to win the job!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bottom">
+
+        <div>
+
+            <!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu1Pkk94U5o3TVTGjikXws11wBTLm61iOMjw&s"  alt="">
+ -->
+
+            <section class="expert-review-section">
+                <h2>Our resume builder includes a review from one of our experts</h2>
+                <div class="review-content">
+                    <div class="review-image">
+                        <img src="/pictures/generated_image_with_new_background-removebg-preview.png"
+                            alt="Illustration of feedback checklist on computer screen">
+                    </div>
+                    <div class="review-details">
+                        <div class="review-item">
+                            <h3>Real feedback from a Resume Analyst</h3>
+                            <p>We’ll read your resume carefully and suggest improvements</p>
+                        </div>
+                        <div class="review-item">
+                            <h3>Section-by-section suggestions</h3>
+                            <p>Get detailed feedback on your summary, skills, work history, and education sections</p>
+                        </div>
+                        <div class="review-item">
+                            <h3>Get answers specific to your resume</h3>
+                            <p>Submit any questions you have for additional guidance</p>
+                        </div>
+                        <div class="review-item">
+                            <h3>Quick turnaround</h3>
+                            <p>Get your review back in just 2-3 business days</p>
+                        </div>
+                        <button class="template-button"><a href="login.html">Choose a template</a></button>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <div class="footer_head">
+
+                    <ul>
+                    <li><a href="about.html">ABOUT US </a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="T_and_C.html">TERMS AND CONDITIONS</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="P_and_P.html">PRIVACY AND POLICY</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="FAQs.html">FAOs</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="Accessibility.html">ACCESSIBILITY</a></li>
+                    </ul>
+                    <!-- <li><a href="#">7</a></li>
+                            <li><a href="#">8</a></li> -->
+                    <br><br>
+                    <div class="footer_links">
+                        <a href="https://www.facebook.com/login/"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://in.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a>                  
+                        <a href="https://www.linkedin.com/login"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer_base">
+                    <p>&copy; 2024 Resume Now. All Rights Reserved.</p>
+
+                </div>
+            </footer>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+        }
+
+        .resume {
+            display: flex;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .sidebar {
+            background-color: #dfe6ed;
+            padding: 20px;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            /* border-radius: 50%; */
+            border: 2px solid black;
+            margin-bottom: 20px;
+        }
+
+        .sidebar h3, .sidebar h4 {
+            color: black;
+            margin: 10px 0;
+        }
+
+        .sidebar p {
+            text-align: center;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .main h2 {
+            color: black;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            border-bottom: 2px solid black;
+            display: inline-block;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h3 {
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .form-section, .resume-preview {
+            display: none;
+        }
+
+        .form-section.active, .resume-preview.active {
+            display: block;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #3e6b9b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 200px;
+            border-radius: 18px;
+        }
+
+        button:hover {
+            background-color: #1e3e68;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Now</h1>
+        <div class="form-section active" id="form-section">
+            <form id="resume-form">
+                <h3>Personal Details</h3>
+                <input type="text" id="fullName" placeholder="Full Name" required>
+
+                <h3>Profile Picture</h3>
+                <input type="file" id="photo" accept="image/*">
+
+                <h3>Personal information:</h3>
+                <textarea id="contact" placeholder="Enter Contact Information"></textarea>
+
+                <h3>LinkedIn</h3>
+                <input type="text" id="linkedin" placeholder="Enter LinkedIn URL">
+
+                <h3>Projects/Website</h3>
+                <textarea id="projects" placeholder="Enter Project Details or Website"></textarea>
+
+                <h3>Education</h3>
+                <textarea id="education" placeholder="Enter Education Details"></textarea>
+
+                <h3>Experience</h3>
+                <textarea id="experience" placeholder="Enter Work Experience"></textarea>
+
+                <h3>Leadership and Skills</h3>
+                <textarea id="leadership" placeholder="Enter Leadership Achievements"></textarea>
+
+                <h3>Skills</h3>
+                <textarea id="skills" placeholder="Enter Skills"></textarea>
+
+                <button type="button" id="generate-btn">Generate Resume</button>
+            </form>
+        </div>
+
+        <div class="resume-preview" id="resume-preview">
+            <div class="resume">
+                <div class="sidebar">
+                    <img src="" alt="Profile Photo" class="profile-photo" id="photo-preview">
+                    <h3 id="name-preview"></h3>
+                    <div id="contact-preview"></div>
+                    <p id="linkedin-preview"></p>
+                </div>
+                <div class="main">
+                    
+                    <div class="section">
+                        <h2>Education</h2>
+                        <div id="education-preview"></div>
+                    </div>
+                    <div class="section">
+                        <h2>Experience</h2>
+                        <div id="experience-preview"></div>
+                    </div>
+                    <div class="section">
+                        <h2>Leadership</h2>
+                        <div id="leadership-preview"></div>
+                    </div>
+                    <div class="section">
+                        <h2>Skills</h2>
+                        <div id="skills-preview"></div>
+                    </div>
+                    <div class="section">
+                        <h2>Projects</h2>
+                        <div id="projects-preview"></div>
+                    </div>
+                </div>
+            </div>
+            <button id="edit-btn">Edit</button>
+            <button id="download-btn">Download PDF</button>
+        </div>
+    </div>
+
+    <script>
+        const formSection = document.getElementById('form-section');
+        const resumePreview = document.getElementById('resume-preview');
+
+        document.getElementById('generate-btn').addEventListener('click', () => {
+            // Get input values
+            const fullName = document.getElementById('fullName').value;
+            const contact = document.getElementById('contact').value;
+            const linkedin = document.getElementById('linkedin').value;
+            const projects = document.getElementById('projects').value.split("\n");
+            const education = document.getElementById('education').value.split("\n");
+            const experience = document.getElementById('experience').value.split("\n");
+            const leadership = document.getElementById('leadership').value.split("\n");
+            const skills = document.getElementById('skills').value.split("\n");
+            const photo = document.getElementById('photo').files[0];
+
+            // Populate resume preview
+            document.getElementById('name-preview').textContent = fullName;
+            document.getElementById('contact-preview').textContent = contact;
+            document.getElementById('linkedin-preview').textContent = linkedin;
+
+            populateSection('projects-preview', projects);
+            populateSection('education-preview', education);
+            populateSection('experience-preview', experience);
+            populateSection('leadership-preview', leadership);
+            populateSection('skills-preview', skills);
+
+            if (photo) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('photo-preview').src = e.target.result;
+                };
+                reader.readAsDataURL(photo);
+            }
+
+            formSection.classList.remove('active');
+            resumePreview.classList.add('active');
+        });
+
+        document.getElementById('edit-btn').addEventListener('click', () => {
+            resumePreview.classList.remove('active');
+            formSection.classList.add('active');
+        });
+
+        document.getElementById('download-btn').addEventListener('click', () => {
+            window.print(); // Opens the print dialog to save as PDF
+
+    
+        });
+
+        function populateSection(id, items) {
+            const section = document.getElementById(id);
+            section.innerHTML = '';
+            items.forEach(item => {
+                if (item.trim()) {
+                    const p = document.createElement('p');
+                    p.textContent = item.trim();
+                    section.appendChild(p);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

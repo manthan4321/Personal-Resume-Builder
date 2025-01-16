@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us Section</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Header Styles */
+
+    .Header {
+            width: 100%;
+            height: 9vh;
+            /* background-color: white; */
+            border: 0.1px solid rgb(230, 221, 221);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0px;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+
+        }
+
+        .logo {
+            position: absolute;
+            left: 210px;
+            top: 25px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            position: absolute;
+            top: 35px;
+            right: 180px;
+            text-indent: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        nav li {
+            display: inline-block;
+            /* Make list items display horizontally */
+
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            /* color: #2563eb;
+  text-decoration: underline; */
+
+
+        }
+
+    /* Body Styles */
+    body {
+      background: linear-gradient(135deg, #bad5d9, #ffffff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin-top: 65px;
+      /* Space for fixed header */
+    }
+
+    /* Heading Styles */
+    .heading {
+      text-align: center;
+      /* margin-bottom: 10px; */
+      padding: 20px;
+    }
+
+    .heading h1 {
+      font-size: 2.5rem;
+      color: #203A43;
+
+    }
+
+    .heading p {
+      font-size: 1.2rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Container Styles */
+    .container {
+      max-width: 900px;
+      padding: 30px;
+      background-color: white;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    /* About Content Styles */
+    .about-content h2 {
+      font-size: 2rem;
+      color: #203A43;
+      margin-bottom: 15px;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .about-content ul {
+      list-style: disc inside;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .about-content ul li {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    /* Resume Card Styles */
+
+    .resume-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
+
+    .resume-card {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 380px;
+      margin: 15px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .resume-card img {
+      width: 100%;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .resume-card h2 {
+      font-size: 1.5rem;
+      color: #203A43;
+      margin-bottom: 14px;
+    }
+
+    .img_2 {
+      height: 350px;
+    }
+    .img_3{
+        height: 330px;
+    }
+
+    .resume-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Hide the checkbox input */
+    .toggle-more {
+      display: none;
+    }
+
+    /* Style the Read More label */
+    .read-more-label {
+      color: #007bff;
+      cursor: pointer;
+      text-decoration: underline;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    /* Initially hide the "more content" section */
+    .more-content {
+      display: none;
+      margin-top: 10px;
+    }
+
+    /* Show the "more content" section when checkbox is checked */
+    .toggle-more:checked~.more-content {
+      display: block;
+    }
+
+    /* Change "Read More" to "Read Less" when content is visible */
+    .toggle-more:checked+.read-more-label::after {
+      content: " Less";
+    }
+
+    .toggle-more:not(:checked)+.read-more-label::after {
+      content: " More";
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <div class="Header">
+    <a href="index.html"><img class="logo" src="https://www.resume-now.com/sapp/themes/resumenow/img/logo-resume-now.svg"
+      alt="Resume Now Logo"></a>
+    <nav>
+      <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- About Section -->
+  <div class="heading">
+    <h1>About Us</h1>
+    <!-- <p>A resume is a formal document that provides an overview of your professional qualifications, including your relevant work experience, skills, education, and notable accomplishments.</p> -->
+  </div>
+
+  <div class="container">
+    <section class="about-content">
+      <h2>HOW WE HELP YOU?</h2>
+      <p>Welcome to Resume Now!</p>
+      <p>At Resume Now, we believe that everyone has a unique story to tell, and we're here to help you craft that story
+        into a compelling resume. Our mission is to empower job seekers by providing easy-to-use tools that simplify the
+        resume-building process, enabling you to showcase your skills and experiences effectively.</p>
+
+      <h2>Our Vision</h2>
+      <p>We envision a world where everyone can present themselves confidently in the job market. Whether you're a
+        recent graduate, a career changer, or an experienced professional, our platform is designed to help you stand
+        out and make a lasting impression.</p>
+
+      <h2>What We Offer</h2>
+      <ul>
+        <li>User-Friendly Templates: Choose from a variety of professionally designed templates that suit your style and
+          industry.</li>
+        <li>Step-by-Step Guidance: Our intuitive interface guides you through each section of your resume, ensuring you
+          include all the essential information.</li>
+        <li>Expert Tips & Resources: Access articles and tips from career experts to enhance your resume and job
+          application process.</li>
+        <li>Customizable Options: Tailor your resume to fit specific job applications with ease.</li>
+      </ul>
+
+      <h2>Join Us</h2>
+      <p>Start building your professional future today with Resume Now. Together, we can turn your aspirations into
+        reality!</p>
+    </section>
+  </div>
+
+
+  <!-- Resume Cards Section -->
+  <div class="heading">
+    <h1>THE TEAM</h1>
+  </div>
+  <div class="resume-cards">
+    <div class="resume-card">
+      <img src="/pictures/Dhruv.jpg"
+        alt="Whats-App-Image-2024-11-03-at-19-14-00" border="0"></a>
+      <h2>DHRUV KANSAL</h2>
+      <p>Web Developer</p>
+      <div class="contact-info">
+        <p>Email: dhruv3261.beai24@chitkara.edu.in</p>
+        <p>Phone: 9646392822</p>
+
+      </div>
+      <!-- Read More Checkbox -->
+      <input type="checkbox" id="toggle-more-1" class="toggle-more">
+
+      <!-- Label for Checkbox as "Read More" Link -->
+      <label for="toggle-more-1" class="read-more-label">Read</label>
+
+      <!-- Hidden Content -->
+      <div class="more-content">
+        <h3>About Me</h3>
+        <p>A passionate web developer with experience in building responsive websites and applications. Proficient in
+          HTML, CSS, JavaScript.</p>
+
+        <h3>Education</h3>
+        <p>Bachelor of Science in Computer Science</p>
+        <p>CHITKARA UNIVERSITY Punjab, 2024</p>
+      </div>
+    </div>
+
+    <div class="resume-card">
+      <img class="img_2" src="./pictures/Devyansh.jpg"
+        alt="Whats-App-Image-2024-11-03-at-19-16-44" border="0"></a>
+      <h2>DEVYANSH AGGARWAL</h2>
+      <p>Web Developer</p>
+      <div class="contact-info">
+        <p>Email: devyansh3260.beai24@chitkara.edu.in</p>
+        <p>Phone: 9355201763</p>
+
+      </div>
+      <!-- Read More Checkbox -->
+      <input type="checkbox" id="toggle-more-2" class="toggle-more">
+
+      <!-- Label for Checkbox as "Read More" Link -->
+      <label for="toggle-more-2" class="read-more-label">Read</label>
+
+      <!-- Hidden Content -->
+      <div class="more-content">
+        <h3>About Me</h3>
+        <p>A passionate web developer with experience in building responsive websites and applications. Proficient in
+          HTML, CSS, JavaScript.</p>
+
+        <h3>Education</h3>
+        <p>Bachelor of Science in Computer Science</p>
+        <p>CHITKARA UNIVERSITY Punjab, 2024</p>
+      </div>
+    </div>
+
+
+    <div class="resume-card">
+      <img class="img_3" src="/pictures/Manthan.jpg"
+        alt="Whats-App-Image-2024-11-03-at-19-11-47" border="0"></a>
+      <h2>MANTHAN KHATRI</h2>
+      <p>Web Developer</p>
+      <div class="contact-info">
+        <p>Email: manthan3291.beai24@chitkara.edu.in</p>
+        <p>Phone: 8708474980</p>
+      </div>
+      <!-- Read More Checkbox -->
+      <input type="checkbox" id="toggle-more-3" class="toggle-more">
+
+      <!-- Label for Checkbox as "Read More" Link -->
+      <label for="toggle-more-3" class="read-more-label">Read</label>
+
+      <!-- Hidden Content -->
+      <div class="more-content">
+        <h3>About Me</h3>
+        <p>A passionate web developer with experience in building responsive websites and applications. Proficient in
+          HTML, CSS, JavaScript.</p>
+
+        <h3>Education</h3>
+        <p>Bachelor of Science in Computer Science</p>
+        <p>CHITKARA UNIVERSITY Punjab, 2024</p>
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>

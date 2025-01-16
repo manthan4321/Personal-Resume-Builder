@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Page - ResumeNow</title>
+    <style>
+    /* Basic Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body and font settings */
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #f4e7d3, #ffffff, #cdf7f7); /* Gradient Background */
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+        font-size: 16px;
+        transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color changes */
+    }
+
+    /* Header styling */
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-out;
+    }
+
+    h1 {
+        font-size: 2.5em;
+        margin: 0;
+    }
+
+    /* Content section */
+    #content {
+        margin: 20px 0;
+    }
+
+    .accessibility-options {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .accessibility-options:hover {
+        transform: scale(1.02); /* Slight hover effect */
+    }
+
+    .section-header {
+        font-size: 1.75em;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    li {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    /* Form styling */
+    .contact-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 1.2em;
+        color: #555;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1.1em;
+        transition: border-color 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 1.1em;
+        border: none;
+        background-color: #28a745;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s ease-in-out;
+    }
+
+    button:hover {
+        background-color: #218838;
+        transform: scale(1.05); /* Slight hover effect */
+    }
+
+    button:focus {
+        outline: 2px solid #333;
+    }
+
+    /* High contrast mode */
+    body.high-contrast {
+        background-color: #000;
+        color: #FFF;
+    }
+
+    body.high-contrast header {
+        background-color: #ffcc00;
+    }
+
+    body.high-contrast .accessibility-options {
+        background-color: #333;
+        color: #FFF;
+    }
+
+    body.high-contrast button {
+        background-color: #f39c12;
+    }
+
+    body.high-contrast button:hover {
+        background-color: #e67e22;
+    }
+
+    /* Font size increase/decrease */
+    body.large-font {
+        font-size: 1.2em;
+    }
+
+    /* Footer styling */
+    footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #1E2A38;
+        color: white;
+        border-radius: 8px;
+        margin-top: 30px;
+    }
+
+    /* Add smooth fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Button group for accessibility toggle */
+    button-group {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    /* Ensure responsiveness */
+    @media (max-width: 768px) {
+        body {
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .accessibility-options {
+            padding: 15px;
+        }
+
+        .section-header {
+            font-size: 1.5em;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+        }
+
+        button {
+            font-size: 1em;
+            padding: 10px 20px;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    
+
+    <section id="content">
+        <h1><CENTER>Commitment to Accessibility</CENTER></h1>
+        <div class="accessibility-options">
+           
+            <h2 class="section-header">Our Commitment</h2>
+            <p>ResumeNow is committed to providing expert employment advice, professional resume and cover letter guidance, resources, and tools accessible to everyone who needs them, including persons with disabilities.</p>
+            <p>We ensure that our content complies with federal regulations under the Rehabilitation Act, and we will continue to follow Website Content Accessibility Guidelines (WCAG) to provide web pages that are WCAG Level A compliant.</p>
+            <p>Giving access to valuable tools and information on a platform that meets the needs of all job seekers, regardless of their circumstances, is of the utmost importance to ResumeNow. We remain committed to accessibility for all.</p>
+        </div>
+
+        <div class="accessibility-options">
+            <h2 class="section-header">Recommended Screen Reader and Browser Combinations</h2>
+            <p>To improve your ResumeNow.com experience, we recommend the following screen reader and browser combinations:</p>
+            <ul>
+                <li><strong>Windows users:</strong> Try <em>NVDA</em> and <em>Chrome or Edge</em></li>
+                <li><strong>Mac users:</strong> Try <em>VoiceOver</em> and <em>Safari</em></li>
+                <li><strong>Mobile users:</strong> We suggest <em>VoiceOver</em> for iPhone and <em>TalkBack</em> for Android devices</li>
+            </ul>
+        </div>
+
+        <div class="accessibility-options">
+            <h2 class="section-header">Contact Us</h2>
+            <p>Need more assistance? We provide fully accessible 24/7 telephone service with a trained customer service representative. Call us directly at <strong>(+91)9636392822</strong> for support. You may also reach out to us by email at <strong>customerservice@resume-now.com</strong>.</p>
+        </div>
+
+        <div class="accessibility-options contact-form">
+            <h2 class="section-header">Email Us</h2>
+            <form action="mailto:customerservice@resume-now.com" method="POST" enctype="text/plain">
+                <label for="full-name">Full Name *</label>
+                <input type="text" id="full-name" name="full-name" required>
+                
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Questions or Comments *</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ResumeNow. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Adjust font size functionality
+        function adjustFontSize(action) {
+            const body = document.body;
+            if (action === 'increase') {
+                body.classList.add('large-font');
+            } else if (action === 'decrease') {
+                body.classList.remove('large-font');
+            }
+        }
+
+        // Toggle high contrast mode
+        function toggleContrast() {
+            const body = document.body;
+            body.classList.toggle('high-contrast');
+        }
+    </script>
+</body>
+</html>

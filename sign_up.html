@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Resume Builder</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            /* background-color:#f0f4f8; */
+            /* background: hsla(120, 60%, 75%, 1);
+
+            background: linear-gradient(45deg, hsla(120, 60%, 75%, 1) 50%, hsla(0, 0%, 96%, 1) 100%);
+
+            background: -moz-linear-gradient(45deg, hsla(120, 60%, 75%, 1) 50%, hsla(0, 0%, 96%, 1) 100%);
+
+            background: -webkit-linear-gradient(45deg, hsla(120, 60%, 75%, 1) 50%, hsla(0, 0%, 96%, 1) 100%);
+
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#b4e6c7", endColorstr="#f6f6f6", GradientType=1); */
+            background: hsla(203, 89%, 71%, 1);
+
+            background: linear-gradient(45deg, hsla(203, 89%, 71%, 1) 50%, hsla(0, 0%, 96%, 1) 100%);
+
+            background: -moz-linear-gradient(45deg, hsla(203, 89%, 71%, 1) 50%, hsla(0, 0%, 96%, 1) 100%);
+
+            background: -webkit-linear-gradient(45deg, hsla(203, 89%, 71%, 1) 50%, hsla(0, 0%, 96%, 1) 100%);
+
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#71c3f7", endColorstr="#f6f6f6", GradientType=1);
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+
+
+        }
+        .container{
+            margin-top: 100px;
+        }
+        .card {
+            border-radius: 18px;
+            background-color: #f0f4f8;
+        }
+
+        h2 {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .form-group {
+            transition: transform 0.3s ease;
+        }
+
+        .form-group:hover {
+            transform: scale(1.02);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .text-center a {
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+
+        .text-center a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .botn {
+            padding: 12px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 150px;
+            position: relative;
+            left: 30%;
+            margin-top: 20px;
+
+
+        }
+
+        .botn:hover {
+            background-color: #2575a1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow mt-5">
+                    <div class="card-body">
+                        <h2 class="text-center">Create Your Account</h2>
+                        <p class="text-center">Join us to build your professional resume!</p>
+                        <form id="formID">
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter your full name"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile">Mobile number:</label>
+                                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile number:"
+                                    maxlength="10" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email address:</label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" name="password" id="password"
+                                    placeholder="Create a password" required>
+                            </div>
+                            <input type="submit" class="botn" value="Sign Up">
+                        </form>
+                        <p class="text-center mt-3">Already have an account? <a href="login.html">Log in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+       let allSignUpDataArray = JSON.parse(localStorage.getItem("sign_upData")) || [];
+
+const formElement = document.getElementById("formID");
+formElement.addEventListener("submit", function (event) {
+    event.preventDefault();
+    // Collecting the form data
+    let formData = new FormData(event.target);
+    
+    // Checking if the email is already registered
+    let userAlreadyExist = false;
+    for (let i = 0; i < allSignUpDataArray.length; i++) {
+        let user = allSignUpDataArray[i];
+        if (user.email === formData.get("email")) {
+            userAlreadyExist = true;
+        }
+    }
+
+    if (userAlreadyExist) {
+        alert("User Email is already exist..Please try with another Email");
+    } else {
+        // Password validation
+        let password = formData.get("password");
+        let alphabetCount = (password.match(/[a-zA-Z]/g) || []).length;
+
+        if (password.length < 8) {
+            alert("Password must be at least 8 characters long.");
+        } else if (alphabetCount <= 4) {
+            alert("Password must contain more than 4 alphabetic characters.");
+        } else {
+            // Converting form data to a JavaScript object
+            let obj = {};
+            formData.forEach(function (v, k) {
+                obj[k] = v;
+            });
+
+            // Appending the new user details to the localStorage
+            allSignUpDataArray.push(obj);
+            let allSignUpDataArrayJson = JSON.stringify(allSignUpDataArray);
+            localStorage.setItem("sign_upData", allSignUpDataArrayJson);
+            
+            console.log(allSignUpDataArray);
+            alert("User Registered Successfully!");
+            window.location.href = "./login.html";
+        }
+    }
+});
+
+    </script>
+</body>
+
+</html>

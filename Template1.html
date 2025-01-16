@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5A8A88;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input, textarea, select {
+            margin-top: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #5A8A88;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #476C68;
+        }
+
+        .resume-container {
+            max-width: 800px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+        }
+
+        .resume-body {
+            display: flex;
+        }
+
+        .left-column {
+            width: 30%;
+            background-color: #5A8A88;
+            color: white;
+            padding: 20px;
+        }
+
+        .left-column img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: auto;
+            display: block;
+        }
+
+        .left-column h2 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .left-column p, .left-column ul {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .right-column {
+            width: 70%;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #5A8A88;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .details p {
+            margin: 5px 0;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Resume Now</h1>
+        <form id="resume-form">
+            <label for="photo">Upload Photo:</label>
+            <input type="file" id="photo" accept="image/*">
+
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required>
+
+            <label for="profile">Profile Summary:</label>
+            <textarea id="profile" placeholder="Short profile about yourself"></textarea>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" placeholder="Enter your phone number">
+
+            <label for="address">Address:</label>
+            <textarea id="address" placeholder="Enter your address"></textarea>
+
+            <label for="website">Website/Portfolio:</label>
+            <input type="url" id="website" placeholder="Enter your website or portfolio URL">
+
+            <label for="linkedin">LinkedIn Profile:</label>
+            <input type="url" id="linkedin" placeholder="Enter your LinkedIn profile URL">
+
+            <label for="education">Education:</label>
+            <textarea id="education" placeholder="List education details"></textarea>
+
+            <label for="languages">Languages:</label>
+            <textarea id="languages" placeholder="Languages you know"></textarea>
+
+            <label for="skills">Skills:</label>
+            <textarea id="skills" placeholder="List your skills"></textarea>
+
+            <label for="volunteer">Volunteer Experience:</label>
+            <textarea id="volunteer" placeholder="Volunteer experiences"></textarea>
+
+            <button type="button" id="generate-btn">Generate Resume</button>
+        </form>
+    </div>
+
+    <div class="resume-container" id="resume-output" style="display: none;">
+        <div class="resume-body">
+            <div class="left-column">
+                <img id="photo-output" src="" alt="Profile Photo">
+                <h2 id="name-output"></h2>
+                <div class="contact">
+                    <p id="email-output"></p>
+                    <p id="phone-output"></p>
+                    <p id="address-output"></p>
+                    <p id="website-output"></p>
+                    <p id="linkedin-output"></p>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="section">
+                    <div class="section-title">Profile</div>
+                    <p id="profile-output"></p>
+                </div>
+                <div class="section">
+                    <div class="section-title">Education</div>
+                    <p id="education-output"></p>
+                </div>
+                <div class="section">
+                    <div class="section-title">Languages</div>
+                    <p id="languages-output"></p>
+                </div>
+                <div class="section">
+                    <div class="section-title">Skills</div>
+                    <p id="skills-output"></p>
+                </div>
+                <div class="section">
+                    <div class="section-title">Volunteer Experience</div>
+                    <p id="volunteer-output"></p>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="edit-btn">Edit</button>
+            <button id="download-btn">Download</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generate-btn').addEventListener('click', function () {
+    const resumeOutput = document.getElementById('resume-output');
+    resumeOutput.style.display = 'block';
+
+    const photoInput = document.getElementById('photo');
+    if (photoInput.files.length > 0) {
+        document.getElementById('photo-output').src = URL.createObjectURL(photoInput.files[0]);
+    }
+    document.getElementById('name-output').textContent = document.getElementById('fullName').value;
+    document.getElementById('email-output').textContent = document.getElementById('email').value;
+    document.getElementById('phone-output').textContent = document.getElementById('phone').value;
+    document.getElementById('address-output').textContent = document.getElementById('address').value;
+    document.getElementById('website-output').textContent = document.getElementById('website').value;
+    document.getElementById('linkedin-output').textContent = document.getElementById('linkedin').value;
+    document.getElementById('profile-output').textContent = document.getElementById('profile').value;
+
+    // Replace `,,` with line breaks
+    document.getElementById('education-output').innerHTML = document.getElementById('education').value.replace(/,,/g, '<br>');
+    document.getElementById('languages-output').innerHTML = document.getElementById('languages').value.replace(/,,/g, '<br>');
+    document.getElementById('skills-output').innerHTML = document.getElementById('skills').value.replace(/,,/g, '<br>');
+    document.getElementById('volunteer-output').innerHTML = document.getElementById('volunteer').value.replace(/,,/g, '<br>');
+
+    document.querySelector('form').style.display = 'none';
+});
+
+document.getElementById('edit-btn').addEventListener('click', function () {
+    document.querySelector('form').style.display = 'flex';
+    document.getElementById('resume-output').style.display = 'none';
+});
+document.getElementById('download-btn').addEventListener('click', function () {
+            window.print(); // Opens the print dialog to save as PDF
+        });
+document.getElementById('download-btn').addEventListener('click', function () {
+    const resumeOutput = document.getElementById('resume-output');
+    const resumeHTML = resumeOutput.outerHTML;
+    const blob = new Blob([resumeHTML], { type: 'text/html' });
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'resume.html';
+    link.click();
+});
+
+    </script>
+</body>
+
+</html>

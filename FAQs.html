@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Resume Building</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Reset and basic styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f8fc;
+  color: #333;
+  line-height: 1.6;
+  background: linear-gradient(135deg, #f4e7d3,  #ffffff,#cdf7f7);
+
+}
+
+/* Header styling */
+header {
+  /* background-color: #1E2A38; */
+      background: linear-gradient(135deg, #f4e7d3,  #ffffff,#cdf7f7);
+
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  border-bottom: 4px solid #4CAF50; /* Green accent */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* FAQ Container */
+.faq-container {
+  margin: 30px auto;
+  padding: 40px;
+  max-width: 900px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* FAQ Category Section */
+.faq-category {
+  margin-bottom: 30px;
+}
+
+.faq-category h2 {
+  font-size: 1.8rem;
+  color: #1E2A38;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 10px;
+}
+
+/* FAQ Item */
+.faq-item {
+  margin-bottom: 20px;
+}
+
+/* FAQ Question */
+.faq-question {
+  width: 100%;
+  padding: 18px 25px;
+  text-align: left;
+  background-color: #f4f6f9; /* Light grayish blue */
+  border: 1px solid #d3d6e0; /* Soft border color */
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  position: relative;
+}
+
+.faq-question::after {
+  content: '\002B'; /* Unicode plus sign */
+  font-size: 1.5rem;
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  transition: transform 0.3s ease;
+}
+
+.faq-question.open::after {
+  transform: rotate(45deg); /* Transform to a cross sign when open */
+}
+
+.faq-question:hover {
+  background-color: #e0e4ea; /* Slightly darker hover state */
+  border-color: #4CAF50; /* Green border on hover */
+}
+
+.faq-question:focus {
+  border-color: #4CAF50; /* Focus border color */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3); /* Subtle focus glow */
+}
+
+/* FAQ Answer */
+.faq-answer {
+  display: none;
+  max-height: 0;
+  padding: 0 25px;
+  border-left: 4px solid #4CAF50; /* Green accent line */
+  background-color: #f9fafb; /* Soft light background for answer */
+  font-size: 1rem;
+  font-weight: 400;
+  color: #555;
+  margin-top: 10px;
+  border-radius: 0 8px 8px 8px; /* Rounded bottom corners */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.faq-answer.open {
+  display: block;
+  max-height: 500px; /* Allows for smooth sliding down effect */
+  padding: 15px 25px;
+}
+
+/* Footer styling */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #1E2A38; /* Dark blue */
+  color: #fff;
+  margin-top: 50px;
+}
+
+footer p {
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .faq-container {
+    padding: 30px;
+  }
+
+  .faq-question {
+    font-size: 1.1rem;
+  }
+
+  .faq-answer {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .faq-container {
+    padding: 20px;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+  }
+}
+.faq-container h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 55px;
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <!-- <header>
+   
+  </header> -->
+
+  <!-- FAQ Container -->
+  <div class="faq-container">
+    <h1>Frequently Asked Questions</h1>
+    <!-- General Questions Section -->
+    <section class="faq-category">
+      <h2>General Questions</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleAnswer(0)">
+          What is a resume builder?
+        </button>
+        <div class="faq-answer">
+          A resume builder is an online tool that helps you create a professional resume by filling in templates with your information.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleAnswer(1)">
+          How can I create a resume using your platform?
+        </button>
+        <div class="faq-answer">
+          You can create a resume by signing up, selecting a template, and filling in your information step-by-step.
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="faq-category">
+      <h2>Pricing & Plans</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleAnswer(2)">
+          What are your pricing plans?
+        </button>
+        <div class="faq-answer">
+          We offer a free plan with basic features and a premium plan with advanced templates and additional customization options.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleAnswer(3)">
+          Is there a trial version available?
+        </button>
+        <div class="faq-answer">
+          Yes, we offer a 7-day free trial for the premium plan to help you explore all features.
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Support Section -->
+    <section class="faq-category">
+      <h2>Technical Support</h2>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleAnswer(4)">
+          What should I do if my resume is not downloading?
+        </button>
+        <div class="faq-answer">
+          If your resume is not downloading, try refreshing the page or check your internet connection. If the issue persists, contact support.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleAnswer(5)">
+          How do I change the template of my resume?
+        </button>
+        <div class="faq-answer">
+          You can change your resume template by selecting the "Change Template" option in the editor after logging in.
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>© 2024 Resume Builder. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleAnswer(index) {
+  const answers = document.querySelectorAll('.faq-answer');
+  const questions = document.querySelectorAll('.faq-question');
+
+  // Close all other answers and remove the 'open' class from all questions
+  answers.forEach((answer, i) => {
+    if (i !== index) {
+      answer.classList.remove('open');
+    }
+  });
+
+  questions.forEach((question, i) => {
+    if (i !== index) {
+      question.classList.remove('open');
+    }
+  });
+
+  const currentAnswer = answers[index];
+  const currentQuestion = questions[index];
+
+  // Toggle the clicked answer
+  if (currentAnswer.classList.contains('open')) {
+    currentAnswer.classList.remove('open');
+    currentQuestion.classList.remove('open');
+  } else {
+    currentAnswer.classList.add('open');
+    currentQuestion.classList.add('open');
+  }
+}
+
+  </script>
+</body>
+
+</html>

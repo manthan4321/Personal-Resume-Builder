@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00695c;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input,
+        textarea {
+            margin-top: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #00695c;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.resume-container {
+    width: 800px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.resume-header {
+    display: flex;
+    background-color: #ffcc00;
+    padding: 20px;
+    align-items: center;
+    gap: 20px;
+}
+
+.photo-section {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: white;
+}
+
+#photo-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.header-content {
+    flex-grow: 1;
+}
+
+.resume-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.resume-header p {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+}
+
+.content {
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #333;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 5px;
+}
+
+.skills-section div,
+.languages-section div {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #333;
+}
+
+#download-btn,
+#edit-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#download-btn:hover,
+#edit-btn:hover {
+    background-color: #0056b3;
+}
+
+@media print {
+    body {
+        background: none;
+    }
+    .resume-container {
+        box-shadow: none;
+        border: none;
+    }
+    #edit-btn,
+    #download-btn {
+        display: none;
+    }
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Resume Now</h1>
+        <div id="form-section">
+            <form id="resume-form">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" placeholder="Enter your full name" required>
+            
+                <label for="photo">Upload Photo:</label>
+                <input type="file" id="photo" accept="image/*">
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" placeholder="Enter your phone number" required>
+            
+                <label for="summary">Professional Summary:</label>
+                <textarea id="summary" placeholder="Write a short professional summary" required></textarea>
+            
+                <label for="education">Education (comma-separated):</label>
+                <textarea id="education" placeholder="Enter your education details" required></textarea>
+            
+                <label for="experience">Work Experience (comma-separated):</label>
+                <textarea id="experience" placeholder="Enter your work experience"></textarea>
+            
+                <label for="projects">Projects (comma-separated):</label>
+                <textarea id="projects" placeholder="List your projects"></textarea>
+            
+                <label for="skills">Skills (comma-separated):</label>
+                <textarea id="skills" placeholder="Enter your skills" required></textarea>
+            
+                <label for="languages">Languages (comma-separated):</label>
+                <textarea id="languages" placeholder="Enter languages you know"></textarea>
+            
+                <button type="button" id="generate-btn">Generate Resume</button>
+            </form>
+            
+        </div>
+
+        <div id="resume-section" style="display: none;">
+            <div class="resume-container">
+                <div class="resume-header">
+                    <div class="photo-section">
+                        <div id="photo-container"></div>
+                    </div>
+                    <div class="header-content">
+                        <h1 id="name"></h1>
+                        <p class="subtitle">Student</p>
+                        <p id="contact"></p>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="section">
+                        <div class="section-title">Profile</div>
+                        <p id="summary-content"></p>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Education</div>
+                        <div id="education-details"></div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Employment History</div>
+                        <div id="experience-details"></div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Projects</div>
+                        <div id="projects-details"></div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Skills</div>
+                        <div id="skills-details" class="skills-section"></div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">Languages</div>
+                        <div id="languages-details" class="languages-section"></div>
+                    </div>
+                </div>
+                <button id="edit-btn">Edit</button>
+                <button id="download-btn">Download</button>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        document.getElementById('generate-btn').addEventListener('click', function () {
+    // Get user input values
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const summary = document.getElementById('summary').value;
+    const education = document.getElementById('education').value.split(',,');
+    const experience = document.getElementById('experience').value.split(',,');
+    const projects = document.getElementById('projects').value.split(',,');
+    const skills = document.getElementById('skills').value.split(',,');
+    const languages = document.getElementById('languages').value.split(',,');
+    const photo = document.getElementById('photo').files[0];
+
+    // Populate the resume section
+    document.getElementById('name').textContent = fullName;
+    document.getElementById('contact').textContent = `${email} | ${phone}`;
+    document.getElementById('summary-content').textContent = summary;
+    populateSection('education-details', education);
+    populateSection('experience-details', experience);
+    populateSection('projects-details', projects);
+    populateSection('skills-details', skills);
+    populateSection('languages-details', languages);
+
+    // Display photo if uploaded
+    const photoContainer = document.getElementById('photo-container');
+    photoContainer.innerHTML = ''; // Clear previous photo
+    if (photo) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.style.width = '100px';
+            img.style.height = '100px';
+            img.style.borderRadius = '50%';
+            photoContainer.appendChild(img);
+        };
+        reader.readAsDataURL(photo);
+    }
+
+    // Toggle visibility
+    document.getElementById('form-section').style.display = 'none';
+    document.getElementById('resume-section').style.display = 'block';
+});
+
+document.getElementById('edit-btn').addEventListener('click', function () {
+    // Ensure previously entered data remains in the form
+    document.getElementById('fullName').value = document.getElementById('name').textContent;
+    const contact = document.getElementById('contact').textContent.split('|');
+    document.getElementById('email').value = contact[0]?.trim();
+    document.getElementById('phone').value = contact[1]?.trim();
+    document.getElementById('summary').value = document.getElementById('summary-content').textContent;
+    restoreSection('education-details', 'education');
+    restoreSection('experience-details', 'experience');
+    restoreSection('projects-details', 'projects');
+    restoreSection('skills-details', 'skills');
+    restoreSection('languages-details', 'languages');
+
+    // Toggle visibility
+    document.getElementById('form-section').style.display = 'block';
+    document.getElementById('resume-section').style.display = 'none';
+});
+document.getElementById('download-btn').addEventListener('click', function () {
+            window.print(); // Opens the print dialog to save as PDF
+        });
+
+// Helper function to populate sections
+function populateSection(id, items) {
+    const section = document.getElementById(id);
+    section.innerHTML = ''; // Clear previous items
+    items.forEach(item => {
+        if (item.trim()) {
+            const div = document.createElement('div');
+            div.textContent = item.trim();
+            section.appendChild(div);
+        }
+    });
+}
+
+// Helper function to restore form values from sections
+function restoreSection(sectionId, inputId) {
+    const section = document.getElementById(sectionId);
+    const items = [];
+    section.querySelectorAll('div').forEach(div => {
+        items.push(div.textContent);
+    });
+    document.getElementById(inputId).value = items.join(', ');
+}
+
+    </script>
+</body>
+
+</html>
